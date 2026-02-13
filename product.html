@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* ກຳນົດສີ Cream ເພີ່ມເຕີມ */
+      body {
+        background-color: #fffdf5; /* ສີ Cream ອ່ອນໆ */
+      }
+    </style>
+  </head>
+  <body class="p-5 md:p-10">
+    <div id="loading"></div>
+    <div id="notification"></div>
+
+    <div
+      class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-pink-100"
+    >
+      <h1 class="text-3xl font-bold text-pink-600 mb-6 flex items-center">
+        <span class="mr-2">📦</span> ຈັດການຂໍ້ມູນສິນຄ້າ
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2" for="id"
+            >Product ID:</label
+          >
+          <input
+            readonly
+            type="text"
+            id="id"
+            class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none cursor-not-allowed"
+            placeholder="Auto-generated"
+          />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2" for="pro_name"
+            >Product Name:</label
+          >
+          <input
+            type="text"
+            id="pro_name"
+            class="w-full px-4 py-2 border border-pink-200 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition"
+          />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2" for="price"
+            >Price:</label
+          >
+          <input
+            type="number"
+            id="price"
+            class="w-full px-4 py-2 border border-pink-200 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition"
+          />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2" for="cat_id"
+            >Category ID:</label
+          >
+          <input
+            type="text"
+            id="cat_id"
+            class="w-full px-4 py-2 border border-pink-200 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none transition"
+          />
+        </div>
+      </div>
+
+      <div class="mt-8 flex gap-4">
+        <button
+          id="saveButton"
+          onclick="addProduct()"
+          class="flex-1 bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-xl transition duration-300 shadow-md hover:shadow-pink-200"
+        >
+          SAVE
+        </button>
+        <button
+          id="updateButton"
+          disabled
+          onclick="updateProduct()"
+          class="flex-1 bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-xl transition duration-300 shadow-md disabled:bg-gray-300 disabled:cursor-not-allowed"
+        >
+          UPDATE
+        </button>
+      </div>
+    </div>
+
+    <div class="my-12 max-w-5xl mx-auto">
+      <div class="border-t-2 border-pink-100 mb-8"></div>
+
+      <div
+        class="bg-white rounded-2xl shadow-xl overflow-hidden border border-pink-100"
+      >
+        <table id="product-table" class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-pink-500 text-white">
+              <th class="py-4 px-6 font-semibold uppercase text-sm text-center">
+                ID
+              </th>
+              <th class="py-4 px-6 font-semibold uppercase text-sm">
+                Product name
+              </th>
+              <th class="py-4 px-6 font-semibold uppercase text-sm">Price</th>
+              <th class="py-4 px-6 font-semibold uppercase text-sm text-center">
+                Category
+              </th>
+              <th class="py-4 px-6 font-semibold uppercase text-sm text-center">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody id="product-body" class="divide-y divide-pink-50"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
