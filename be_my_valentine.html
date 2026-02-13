@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="lo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ເຈົ້າເປັນວາເລັນທາຍຂອງຂ້ອຍໄດ້ບໍ່?" />
+    <meta property="og:description" content="ຂ້ອຍຮັກເຈົ້າທີ່ສຸດໃນໂລກ" />
+    <meta property="og:image" content="img/flowers.jpg" />
+    <meta
+      property="og:url"
+      content="https://haamlezz.github.io/valentine-quote"
+    />
+    <title>Be My Valentine?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Smooth transition for button movement and scaling */
+      #noButton {
+        transition: all 0.3s ease;
+      }
+      #yesButton {
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-pink-50 flex items-center justify-center min-h-screen font-sans overflow-hidden"
+  >
+    <div
+      id="questionContainer"
+      class="text-center p-10 bg-white rounded-3xl shadow-2xl max-w-lg w-full m-4"
+    >
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-8">
+        ເຈົ້າຈະເປັນວາເລັນໄທຂອງຂ້ອຍໄດ້ບໍ່? ❤️
+      </h1>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <button
+          id="yesButton"
+          onclick="showProposal()"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transform hover:scale-105 text-xl"
+        >
+          ໄດ້! 😍
+        </button>
+        <button
+          id="noButton"
+          onmouseover="moveButton()"
+          onclick="moveButton()"
+          class="bg-red-500 text-white font-bold py-4 px-10 rounded-full shadow-lg text-xl"
+        >
+          ບໍ່! 😢
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="proposalPopup"
+      class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+    >
+      <div
+        class="bg-white rounded-3xl shadow-2xl max-w-lg w-full text-center p-8 transform scale-95 transition-transform duration-300"
+      >
+        <h2 class="text-4xl font-extrabold text-pink-600 mb-6">
+          ເຢ້! ເຈົ້າເປັນວາເລັນໄທຂອງຂ້ອຍແລ້ວ! 🥰
+        </h2>
+
+        <img
+          src="img/flowers.jpg"
+          alt="Beautiful Flowers"
+          class="rounded-2xl mb-6 w-full h-80 object-cover shadow-inner"
+        />
+
+        <p class="text-gray-700 text-lg mb-6">ຂ້ອຍຮັກເຈົ້າຫຼາຍທີ່ສຸດໃນໂລກ!</p>
+        <button
+          onclick="closePopup()"
+          class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full"
+        >
+          ປິດ
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const noButton = document.getElementById("noButton");
+      const yesButton = document.getElementById("yesButton");
+      const proposalPopup = document.getElementById("proposalPopup");
+      let yesScale = 1;
+
+      // Function to move the "No" button
+      function moveButton() {
+        // Random position within the screen
+        const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+        noButton.style.position = "fixed";
+        noButton.style.left = `${x}px`;
+        noButton.style.top = `${y}px`;
+
+        // Make "No" button smaller
+        noButton.style.transform = `scale(${Math.max(0.5, noButton.getBoundingClientRect().width / 200)})`;
+
+        // Make "Yes" button bigger
+        yesScale += 0.2;
+        yesButton.style.transform = `scale(${yesScale})`;
+      }
+
+      // Function to show the popup
+      function showProposal() {
+        proposalPopup.classList.remove("hidden");
+        proposalPopup.querySelector("div").classList.remove("scale-95");
+        proposalPopup.querySelector("div").classList.add("scale-100");
+      }
+
+      // Function to close the popup
+      function closePopup() {
+        proposalPopup.classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>
